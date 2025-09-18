@@ -44,7 +44,7 @@ Aggiungila nel file `local.properties`:
 
 ## 📎 Link utili
 
-- 🔗 [Repository GitHub](https://github.com/Chris0451/Progetto_reading_challenge-Prog_Mobile)  
+- 🔗 [Repository GitHub](https://github.com/Chris0451/Reading_Stats)
 - 📖 [Google Books API Documentation](https://developers.google.com/books)  
 - 🔥 [Firebase Documentation](https://firebase.google.com/docs)  
 
