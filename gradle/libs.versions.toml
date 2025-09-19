@@ -9,6 +9,12 @@ lifecycleRuntimeKtx = "2.9.4"
 activityCompose = "1.11.0"
 composeBom = "2025.09.00"
 
+# Firebase / Google (aggiunte)
+firebase-bom = "34.2.0"
+gms = "4.4.3"         # com.google.gms.google-services
+crashlytics = "3.0.6" # com.google.firebase.crashlytics
+perf = "2.0.1"        # com.google.firebase.firebase-perf
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -25,8 +31,43 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+# ---- FIREBASE (aggiunte) ----
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+
+# Moduli Firebase (senza versione: le prende dal BoM)
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-auth = { module = "com.google.firebase:firebase-auth" }
+firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
+firebase-storage = { module = "com.google.firebase:firebase-storage" }
+firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
+firebase-crashlytics-lib = { module = "com.google.firebase:firebase-crashlytics" }
+firebase-perf-lib = { module = "com.google.firebase:firebase-perf" }
+firebase-appcheck-playintegrity = { module = "com.google.firebase:firebase-appcheck-playintegrity" }
+
+[bundles]
+# Il “core” tipico di molte app con Auth/DB/Storage + AppCheck
+firebase-core = [
+    "firebase-analytics",
+    "firebase-auth",
+    "firebase-firestore",
+    "firebase-storage",
+    "firebase-appcheck-playintegrity",
+]
+
+# Servizi operativi opzionali
+firebase-ops = [
+    "firebase-messaging",
+    "firebase-crashlytics-lib",
+    "firebase-perf-lib",
+]
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# Plugin Google/Firebase (aggiunte)
+google-services = { id = "com.google.gms.google-services", version.ref = "gms" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlytics" }
+firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "perf" }
 

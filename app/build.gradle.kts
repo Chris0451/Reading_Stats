@@ -2,6 +2,12 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+    // Firebase/Google
+    alias(libs.plugins.google.services)      // deve stare nel modulo app
+    // opzionali:
+    alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.firebase.perf)
 }
 
 android {
@@ -56,4 +62,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // --- FIREBASE (solo alias) ---
+    // BoM per allineare le versioni
+    implementation(platform(libs.firebase.bom))
+
+    // Pacchetto base (Auth/Firestore/Storage/AppCheck/Analytics)
+    implementation(libs.bundles.firebase.core)
+
+    // Opzionali (Messaging, Crashlytics, Performance)
+    implementation(libs.bundles.firebase.ops)
 }
