@@ -1,6 +1,5 @@
-package com.project.reading_stats.ui.theme
+package com.project.reading_stats.core.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

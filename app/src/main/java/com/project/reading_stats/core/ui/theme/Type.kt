@@ -1,4 +1,4 @@
-package com.project.reading_stats.ui.theme
+package com.project.reading_stats.core.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

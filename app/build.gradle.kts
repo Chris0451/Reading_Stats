@@ -63,6 +63,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation(platform(libs.androidx.compose.bom.vlatuaversione))
+    implementation(libs.androidx.navigation.compose)
+    // se usi Hilt nei Composable:
+    implementation(libs.androidx.hilt.navigation.compose)
+
     // --- FIREBASE (solo alias) ---
     // BoM per allineare le versioni
     implementation(platform(libs.firebase.bom))
@@ -72,4 +77,6 @@ dependencies {
 
     // Opzionali (Messaging, Crashlytics, Performance)
     implementation(libs.bundles.firebase.ops)
+
+
 }
