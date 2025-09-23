@@ -16,12 +16,12 @@ import javax.inject.Singleton
     - to check if the user is logged in
  */
 @Singleton
-class AuthRepository @Inject constructor(
+open class AuthRepository @Inject constructor(
     private val auth: FirebaseAuth,
     private val db: FirebaseFirestore
 ) {
 
-    suspend fun login(email: String, password: String): Result<UserProfile> {
+    open suspend fun login(email: String, password: String): Result<UserProfile> {
         return try {
             val res = auth.signInWithEmailAndPassword(email, password).await()
             val uid = res.user?.uid ?: throw IllegalStateException("UID nullo dopo login")
@@ -34,7 +34,7 @@ class AuthRepository @Inject constructor(
         }
     }
 
-    suspend fun register(profile: UserProfile, password: String): Result<UserProfile> {
+    open suspend fun register(profile: UserProfile, password: String): Result<UserProfile> {
         return try {
             val res = auth.createUserWithEmailAndPassword(profile.email, password).await()
             val uid = res.user?.uid ?: throw IllegalStateException("UID nullo dopo register")
@@ -47,12 +47,12 @@ class AuthRepository @Inject constructor(
         }
     }
 
-    suspend fun isEmailTaken(email: String): Boolean {
+    open suspend fun isEmailTaken(email: String): Boolean {
         val q = db.collection("users").whereEqualTo("email", email).limit(1).get().await()
         return !q.isEmpty
     }
 
-    suspend fun isUsernameTaken(username: String): Boolean {
+    open suspend fun isUsernameTaken(username: String): Boolean {
         val q = db.collection("users").whereEqualTo("username", username).limit(1).get().await()
         return !q.isEmpty
     }
