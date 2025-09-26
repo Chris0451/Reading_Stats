@@ -1,15 +1,15 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.hilt.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose")
+    id("org.jetbrains.kotlin.kapt")
+    id("com.google.dagger.hilt.android")
 
     // Firebase/Google
-    alias(libs.plugins.google.services)      // deve stare nel modulo app
+    id("com.google.gms.google-services")      // deve stare nel modulo app
     // opzionali:
-    alias(libs.plugins.firebase.crashlytics)
-    alias(libs.plugins.firebase.perf)
+    id("com.google.firebase.crashlytics")
+    id("com.google.firebase.firebase-perf")
 }
 
 android {
